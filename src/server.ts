@@ -2,12 +2,15 @@ import app from './app';
 import { config } from './config';
 import { logger } from './utils/logger';
 import { startActivationJob } from './cron/activation.cron';
-import { connectToDatabase } from './prisma/client';
+import { connectToDatabase, verifySchema } from './prisma/client';
 
 const start = async (): Promise<void> => {
   try {
     await connectToDatabase();
     logger.info('Database connection established');
+
+    await verifySchema();
+    logger.info('Prisma schema validated');
 
     const server = app.listen(config.port, () => {
       logger.info(`Server listening on port ${config.port}`);
