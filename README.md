@@ -76,7 +76,33 @@ Response indicates whether the database connection is healthy.
 ### Fetch users
 GET `/api/users`
 
-Returns the list of users from the database for validation and debugging.
+Query parameters:
+- `q`: Search query (searches fullname, email, mobile)
+- `status`: Filter by status (active/inactive)
+- `gender`: Filter by gender
+- `sortBy`: Sort field (id, fullname, email, gender, mobile, status, createdAt)
+- `sortOrder`: Sort order (asc/desc, default: asc)
+- `page`: Page number (default: 1)
+- `limit`: Items per page (default: 10)
+
+Example: `GET /api/users?q=john&status=active&sortBy=createdAt&sortOrder=desc&page=1&limit=5`
+
+Response:
+```json
+{
+  "success": true,
+  "message": "Users fetched successfully",
+  "data": {
+    "users": [...],
+    "pagination": {
+      "page": 1,
+      "limit": 5,
+      "total": 100,
+      "totalPages": 20
+    }
+  }
+}
+```
 
 ## Response Format
 

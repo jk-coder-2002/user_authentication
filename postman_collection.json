@@ -84,7 +84,7 @@
           "raw": ""
         },
         "url": {
-          "raw": "http://localhost:4000/api/users",
+          "raw": "http://localhost:4000/api/users?q=john&status=active&sortBy=createdAt&sortOrder=desc&page=1&limit=5",
           "protocol": "http",
           "host": [
             "localhost"
@@ -93,6 +93,32 @@
           "path": [
             "api",
             "users"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "john"
+            },
+            {
+              "key": "status",
+              "value": "active"
+            },
+            {
+              "key": "sortBy",
+              "value": "createdAt"
+            },
+            {
+              "key": "sortOrder",
+              "value": "desc"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            }
           ]
         }
       },

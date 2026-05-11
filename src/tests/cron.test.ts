@@ -1,6 +1,10 @@
 import prisma from '../prisma/client';
 import { activateInactiveUsers } from '../cron/activation.cron';
 
+jest.mock('../utils/email', () => ({
+  sendActivationEmail: jest.fn().mockResolvedValue(undefined)
+}));
+
 describe('Cron activation', () => {
   beforeAll(async () => {
     await prisma.user.deleteMany();
